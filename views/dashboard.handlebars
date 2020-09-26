@@ -1,0 +1,104 @@
+<!-- Item search bar -->
+<nav class="navbar navbar-light bg-light">
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Product Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+
+  <!-- shopping cart -->
+  <div class="navbar" style="vertical-align: middle;">
+    <div class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="cart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-cart"></i>Cart <span class="badge">0</span></a>
+      {{!-- <!-- dropdown cart -->
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="container">
+          <div class="shopping-cart">
+            <div class="shopping-cart-header">
+              <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span>
+                <div class="shopping-cart-total">
+                  <span class="lighter-text">Total:</span>
+                  <span class="main-color-text">$2,229.97</span>
+                </div>
+                <ul class="shopping-cart-items">
+                  <li class="clearfix">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
+                      <span class="item-name">Sony DSC-RX100M III</span>
+                      <span class="item-price">$849.99</span>
+                      <span class="item-quantity">Quantity: 01</span>
+                  </li>
+
+                  <li class="clearfix">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item2.jpg" alt="item1" />
+                      <span class="item-name">KS Automatic Mechanic...</span>
+                      <span class="item-price">$1,249.99</span>
+                      <span class="item-quantity">Quantity: 01</span>
+                  </li>
+
+                  <li class="clearfix">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item3.jpg" alt="item1" />
+                      <span class="item-name">Kindle, 6" Glare-Free To...</span>
+                      <span class="item-price">$129.99</span>
+                      <span class="item-quantity">Quantity: 01</span>
+                  </li>
+                </ul>
+              <a href="#" class="button">Checkout</a>
+            </div>
+          </div>
+        </div>
+      </div> --}}
+    </div>
+  </div>
+</nav>
+
+<!-- Show item, description, quantity, and desired stock amount --> 
+<div class="container-lg">
+    <div class="table-responsive">
+        <div class="table-wrapper" style="width:auto">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8"><h2><b>Restaurant Inventory</b></h2></div>
+                    <div class="col-sm-4">
+                    </div>
+                </div>
+            </div>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Current Quantity</th>
+      <th>Desired Stock Amount</th>
+      <th>Stock Number</th>
+      <th class="d-none">Restaurant ID</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each items}}
+    <tr>
+      <tr data-id="{{this.id}}"></tr>
+      <td>{{this.name}}</td>
+      <td>{{this.quantity}}</td> 
+      <td>{{this.stockAmount}}</td>
+      <td>{{this.stockNumber}}</td>
+      <td class="d-none">{{this.restaurantid}}</td>
+      <td>
+            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+            <a class="delete" data-id="{{this.id}}" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+      </td>
+    </tr>
+    {{/each}}
+    
+    <tr>
+      <td><input type="text" class="form-control" name="name" id="new-name"></td>
+      <td><input type="text" class="form-control" name="quantity" id="new-quantity"></td>
+      <td><input type="text" class="form-control" name="stockAmount" id="new-stock-amount"></td>
+      <td><input type="text" class="form-control" name="stockNumber" id="new-stock-number"></td>
+      <td class="d-none"><input type="text" class="form-control d-none" name="restaurant-id" id="new-restaurant-id" value="{{restaurantid}}"></td>
+    <td>
+      <a class="submit" title="Submit" data-toggle="tooltip"><i class="material-icons">&#xe5ca;</i></a>
+    </td>
+</tr> 
+  </tbody>
+</table>
+
+<script type="text/javascript" src="/js/inventory.js"></script>
